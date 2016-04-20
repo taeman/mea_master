@@ -1,0 +1,24 @@
+<?php
+/**
+* @comment menu สำหรับหน้าจอความผิดทางวินัย (dashboard)
+* @projectCode 		57LIQ01
+* @tor 				3.2.4.2.2.1
+* @package 			core
+* @author 			Wannapa thongtawee (wannapa@sapphire.co.th)
+* @access 			public
+* @created 			19/01/2016
+*/
+?>
+<div class="block" id="menu" style="width:99%; margin-right:0.5%; text-align:right;">
+
+<?php if($function == '' || $function == 'dashboard'){ ?>
+	<img src="../../images/mea_hr/icon-create.png" class="btn-img" onclick="document.location='?controller=prohibit&fn=form_keyin'" title="เพิ่มข้อมูล" />
+    <a href="index.php?controller=general&fn=dashboard"><img src="../../images/mea_hr/icon-prev.png" class="btn-img" title="กลับหน้าหลัก" /></a>
+<?php }elseif($function == 'form_keyin'){ ?>
+	<img src="../../images/mea_hr/icon-save.png" class="btn-img" onclick="checkForm_keyin();" title="บันทึกข้อมูล" />
+    <?php if($_GET['runid'] != ''){ ?>
+    <img src="../../images/mea_hr/icon-delete.png" class="btn-img" onclick="deleteData('<?php echo $_GET['runid']?>');" title="ลบข้อมูล" />
+    <?php } ?>
+    <img src="../../images/mea_hr/icon-cancel.png" class="btn-img" onclick="document.location='?controller=prohibit&fn=dashboard'" title="ยกเลิก" />
+<?php } ?>
+</div>

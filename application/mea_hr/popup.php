@@ -1,0 +1,50 @@
+<?php
+/**
+* @comment ไฟล์ถูกสร้างขึ้นมาสำหรับเป็น Controls ให้ระบบ
+* @projectCode 57LIQ01
+* @tor 3.2.4.2
+* @package core
+* @author Kiatisak Chansawang
+* @access public
+* @created 05/01/2016
+*/
+header('Content-Type: text/html; charset=utf-8');
+include("../../config/db_define.php"); # define ค่าฐานข้อมูล
+include("../../config/class.condb.php"); # class เชื่อมต่อฐานข้อมูล
+$db = new DBConnection();
+
+include("../../common/global/class/class.datetime.php"); # class เกี่ยวกับวันที่
+$dateTime = new dateAndTime();
+
+include("models/class.main.php");
+$main = new Main();
+
+/* Test Data */
+$_SESSION[idcard] = 3110200234548;
+
+$controller = ($_GET['controller'] == '') ? 'main_hr' : $_GET['controller'];
+$function = ($_GET['fn'] == '') ? 'menu_hr' : $_GET['fn'];
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ระบบทะเบียนประวัติ</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../common/mea_hr/css/main.css" />
+<!--<link rel="stylesheet" href="../../common/global/font/Thai_Sans_Neue_Regular.css">-->
+<link rel="stylesheet" href="../../common/global/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../common/global/css/jquery-ui-1.7.2.custom.css">
+<link rel="stylesheet" href="../../common/mea_hr/css/liq.css">
+<script src="../../common/global/js/jquery-1.10.2.js"></script>
+<script src="../../common/global/js/jquery-ui.js"></script>
+<script src="../../common/global/js/bootstrap.min.js"></script>
+<script src="../../common/mea_hr/js/main.js"></script>
+<body style="background:#FFF;">
+<div class="block" style="width:100%; height:auto; background:#FFF;">
+    <div class="block" id="body" style="width:99%; height:auto !important; min-height:500px; margin:0.5%; background:#FFF">
+        <?php  include("controls/".$controller."/".$function.".php"); ?>
+    </div>
+</div>
+</body>
+</html>
